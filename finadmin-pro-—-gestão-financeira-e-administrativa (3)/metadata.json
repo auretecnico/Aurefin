@@ -1,0 +1,6 @@
+{
+  "name": "AureFin — Gestão Financeira e Administrativa",
+  "description": "Sistema completo de gestão financeira e administrativa AureFin: faturamento diário, contas a pagar e receber, boletos, fluxo de caixa, DRE gerencial, bancos brasileiros, relatórios e exportação para Excel.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

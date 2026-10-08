@@ -1,0 +1,1470 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AureFin — Gestão Financeira e Administrativa</title>
+    <meta name="description" content="Sistema completo de gestão financeira e administrativa AureFin: faturamento diário, contas a pagar e receber, boletos, fluxo de caixa, DRE gerencial, bancos brasileiros, relatórios e exportação para Excel." />
+    <meta property="og:title" content="AureFin — Gestão Financeira e Administrativa" />
+    <meta property="og:description" content="Sistema completo de gestão financeira e administrativa AureFin: faturamento diário, contas a pagar e receber, boletos, fluxo de caixa, DRE gerencial, bancos brasileiros, relatórios e exportação para Excel." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <div id="app-layout">
+      <!-- SIDEBAR FIXO E ELEGANTE -->
+      <aside id="sidebar">
+        <div class="sidebar-header">
+          <a href="#" class="sidebar-brand">
+            <div class="brand-icon">
+              <i data-lucide="shield-check"></i>
+            </div>
+            <div class="brand-text">
+              <span class="brand-title" id="sidebar-org-title">AureFin Pro</span>
+              <span class="brand-subtitle" id="sidebar-org-subtitle">Minha Empresa</span>
+            </div>
+          </a>
+          <button class="sidebar-toggle-btn" id="sidebar-toggle" title="Recolher Menu">
+            <i data-lucide="panel-left-close"></i>
+          </button>
+        </div>
+
+        <nav class="sidebar-scroll">
+          <div class="sidebar-group-title">Gestão Diária</div>
+          <a class="nav-item active" data-view="dashboard">
+            <span class="nav-icon"><i data-lucide="layout-dashboard"></i></span>
+            <span class="nav-label">Visão Geral</span>
+          </a>
+          <a class="nav-item" data-view="daily-revenue">
+            <span class="nav-icon"><i data-lucide="receipt"></i></span>
+            <span class="nav-label">Faturamento Diário</span>
+          </a>
+          <a class="nav-item" data-view="transactions">
+            <span class="nav-icon"><i data-lucide="arrow-left-right"></i></span>
+            <span class="nav-label">Movimentações</span>
+          </a>
+          <a class="nav-item" data-view="cashflow">
+            <span class="nav-icon"><i data-lucide="line-chart"></i></span>
+            <span class="nav-label">Fluxo de Caixa</span>
+          </a>
+
+          <div class="sidebar-group-title">Obrigações & Recebimentos</div>
+          <a class="nav-item" data-view="payables">
+            <span class="nav-icon"><i data-lucide="arrow-up-right"></i></span>
+            <span class="nav-label">Contas a Pagar</span>
+            <span class="nav-badge" id="badge-payables-alert">Alertas</span>
+          </a>
+          <a class="nav-item" data-view="receivables">
+            <span class="nav-icon"><i data-lucide="arrow-down-left"></i></span>
+            <span class="nav-label">Contas a Receber</span>
+          </a>
+          <a class="nav-item" data-view="bankslips">
+            <span class="nav-icon"><i data-lucide="barcode"></i></span>
+            <span class="nav-label">Boletos e Documentos</span>
+          </a>
+          <a class="nav-item" data-view="expenses">
+            <span class="nav-icon"><i data-lucide="trending-down"></i></span>
+            <span class="nav-label">Despesas</span>
+          </a>
+          <a class="nav-item" data-view="revenues">
+            <span class="nav-icon"><i data-lucide="trending-up"></i></span>
+            <span class="nav-label">Receitas</span>
+          </a>
+
+          <div class="sidebar-group-title">Tesouraria & Finanças</div>
+          <a class="nav-item" data-view="bank-accounts">
+            <span class="nav-icon"><i data-lucide="landmark"></i></span>
+            <span class="nav-label">Bancos e Caixas</span>
+          </a>
+          <a class="nav-item" data-view="loans">
+            <span class="nav-icon"><i data-lucide="hand-coins"></i></span>
+            <span class="nav-label">Empréstimos & Parcelas</span>
+          </a>
+
+          <div class="sidebar-group-title">Cadastros Gerenciais</div>
+          <a class="nav-item" data-view="customers">
+            <span class="nav-icon"><i data-lucide="users"></i></span>
+            <span class="nav-label">Clientes</span>
+          </a>
+          <a class="nav-item" data-view="suppliers">
+            <span class="nav-icon"><i data-lucide="truck"></i></span>
+            <span class="nav-label">Fornecedores</span>
+          </a>
+          <a class="nav-item" data-view="categories">
+            <span class="nav-icon"><i data-lucide="tags"></i></span>
+            <span class="nav-label">Categorias Financeiras</span>
+          </a>
+          <a class="nav-item" data-view="goals">
+            <span class="nav-icon"><i data-lucide="target"></i></span>
+            <span class="nav-label">Metas Financeiras</span>
+          </a>
+
+          <div class="sidebar-group-title">Estratégico & Exportação</div>
+          <a class="nav-item" data-view="reports">
+            <span class="nav-icon"><i data-lucide="file-text"></i></span>
+            <span class="nav-label">Relatórios & DRE</span>
+          </a>
+          <a class="nav-item" data-view="excel-export">
+            <span class="nav-icon"><i data-lucide="file-spreadsheet"></i></span>
+            <span class="nav-label">Excel & Exportações</span>
+          </a>
+
+          <div class="sidebar-group-title">Sistema & Auditoria</div>
+          <a class="nav-item" data-view="trash-audit">
+            <span class="nav-icon"><i data-lucide="history"></i></span>
+            <span class="nav-label">Lixeira & Histórico</span>
+          </a>
+          <a class="nav-item" data-view="settings">
+            <span class="nav-icon"><i data-lucide="settings"></i></span>
+            <span class="nav-label">Configurações & Backup</span>
+          </a>
+          <a class="nav-item" data-view="help">
+            <span class="nav-icon"><i data-lucide="help-circle"></i></span>
+            <span class="nav-label">Ajuda & Orientações</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="company-badge-icon">
+            <i data-lucide="building-2"></i>
+          </div>
+          <div class="company-meta">
+            <span class="company-name" id="sidebar-org-name-text">Minha Empresa</span>
+            <span class="company-status">
+              <span class="status-dot-green"></span> Base Local Segura
+            </span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ÁREA DE CONTEÚDO PRINCIPAL -->
+      <main id="main-content">
+        <!-- TOPBAR DISCRETO -->
+        <header id="topbar">
+          <div class="topbar-left">
+            <div class="breadcrumb-trail">
+              <span>AureFin Pro</span>
+              <span class="breadcrumb-separator">/</span>
+              <span class="breadcrumb-current" id="breadcrumb-current">Visão Geral</span>
+            </div>
+            <!-- Botão Personalizar Nome -->
+            <button class="org-name-button" id="btn-edit-org-name" title="Clique para personalizar o nome da empresa ou seu nome">
+              <i data-lucide="building-2"></i>
+              <span id="topbar-org-name-text">Minha Empresa</span>
+              <i data-lucide="pencil" style="width: 12px; height: 12px; color: var(--text-muted);"></i>
+            </button>
+          </div>
+
+          <div class="topbar-center">
+            <div class="global-search-container">
+              <div class="search-input-wrapper">
+                <i data-lucide="search"></i>
+                <input type="text" id="global-search-input" placeholder="Buscar clientes, fornecedores, boletos ou valores..." aria-label="Busca global" />
+                <span class="search-kbd">Alt+F</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="topbar-right">
+            <!-- Botão Lembrar Depois / Lembretes Rápidos -->
+            <button class="btn-topbar-action" id="btn-quick-reminders" title="Lembrar Depois (Lembretes Financeiros)">
+              <i data-lucide="bell"></i> Lembrar Depois
+              <span class="btn-counter-badge" id="reminders-badge-count">0</span>
+            </button>
+
+            <!-- Seletor de Período -->
+            <div class="period-selector-wrapper">
+              <i data-lucide="calendar" style="width: 14px; margin-right: 4px; color: var(--text-muted);"></i>
+              <select id="global-period-select" aria-label="Selecionar período">
+                <option value="current_month" selected>Mês Atual</option>
+                <option value="last_30_days">Últimos 30 Dias</option>
+                <option value="prev_month">Mês Anterior</option>
+                <option value="current_quarter">Este Trimestre</option>
+                <option value="current_year">Este Ano</option>
+                <option value="all">Todo o Histórico</option>
+              </select>
+            </div>
+
+            <!-- Indicador Excel -->
+            <div class="unsaved-export-badge" id="unsaved-export-badge" onclick="window.aureFin.triggerMasterExcelExport()">
+              <i data-lucide="file-spreadsheet"></i> Excel Sincronizado
+            </div>
+
+            <!-- Botão Calculadora -->
+            <button class="btn-topbar-action" id="btn-quick-calc" title="Calculadora Financeira (Alt+C)">
+              <i data-lucide="calculator"></i>
+            </button>
+
+            <!-- Exportar Excel Rápido -->
+            <button class="btn-topbar-action" id="btn-quick-export" title="Exportar Excel Consolidado (Alt+E)">
+              <i data-lucide="download"></i> Excel
+            </button>
+
+            <!-- Novo Lançamento -->
+            <button class="btn-primary-action" id="btn-new-entry">
+              <i data-lucide="plus"></i> Novo Lançamento
+            </button>
+          </div>
+        </header>
+
+        <!-- CONTAINER DAS TELAS -->
+        <div id="view-container">
+
+          <!-- 1. VISÃO GERAL (DASHBOARD) -->
+          <section id="view-dashboard" class="view-section active">
+            <div class="page-header">
+              <div class="page-header-text">
+                <h1>Painel Financeiro & Administrativo</h1>
+                <p>Resumo executivo consolidado com faturamento, caixa, obrigações e projeções financeiras.</p>
+              </div>
+              <div class="page-header-actions">
+                <button class="btn btn-secondary" onclick="window.aureFin.triggerMasterExcelExport()">
+                  <i data-lucide="download"></i> Baixar Relatório Excel
+                </button>
+                <button class="btn btn-primary" onclick="window.aureFin.openDailyRevenueModal()">
+                  <i data-lucide="plus"></i> Fechamento Diário
+                </button>
+              </div>
+            </div>
+
+            <!-- Banner de Personalização da Organização & Acesso Rápido -->
+            <div class="welcome-org-card" id="welcome-org-card">
+              <div class="welcome-org-info">
+                <div class="welcome-badge"><i data-lucide="sparkles"></i> AureFin Inicializado do Zero</div>
+                <h2 class="welcome-title">Organização Financeira: <span id="dash-org-name-highlight">Minha Empresa</span></h2>
+                <p class="welcome-desc">
+                  Bancos configurados: <strong>Banco do Brasil</strong>, <strong>Mercado Pago</strong>, <strong>PagBank</strong> e <strong>Bradesco</strong> (todos com saldo R$ 0,00). Sistema pronto para seu uso!
+                </p>
+              </div>
+              <div class="welcome-org-actions">
+                <button class="btn btn-secondary btn-sm" onclick="window.aureFin.openOrgNameModal()">
+                  <i data-lucide="edit-3"></i> Personalizar Nome
+                </button>
+                <button class="btn btn-secondary btn-sm" onclick="window.aureFin.openRemindersModal()">
+                  <i data-lucide="bell"></i> Lembrar Depois
+                </button>
+                <button class="btn btn-secondary btn-sm" onclick="window.aureFin.openAdjustBalanceModal()">
+                  <i data-lucide="sliders"></i> Ajustar Saldos
+                </button>
+              </div>
+            </div>
+
+            <!-- Grid de Indicadores Principais -->
+            <div class="stat-summary-grid">
+              <div class="stat-item">
+                <div class="stat-header">
+                  <span class="stat-label">Saldo em Caixa & Bancos</span>
+                  <span class="stat-icon"><i data-lucide="wallet"></i></span>
+                </div>
+                <div class="stat-value neutral" id="dash-balance">R$ 0,00</div>
+                <div class="stat-subtext">Total disponível nas contas ativas</div>
+              </div>
+
+              <div class="stat-item">
+                <div class="stat-header">
+                  <span class="stat-label">Faturamento Bruto</span>
+                  <span class="stat-icon"><i data-lucide="trending-up"></i></span>
+                </div>
+                <div class="stat-value" id="dash-gross-revenue">R$ 0,00</div>
+                <div class="stat-subtext">Vendas registradas no período</div>
+              </div>
+
+              <div class="stat-item">
+                <div class="stat-header">
+                  <span class="stat-label">Entradas no Caixa</span>
+                  <span class="stat-icon"><i data-lucide="arrow-down-left"></i></span>
+                </div>
+                <div class="stat-value positive" id="dash-income-realized">R$ 0,00</div>
+                <div class="stat-subtext">Valores efetivamente recebidos</div>
+              </div>
+
+              <div class="stat-item">
+                <div class="stat-header">
+                  <span class="stat-label">Saídas do Caixa</span>
+                  <span class="stat-icon"><i data-lucide="arrow-up-right"></i></span>
+                </div>
+                <div class="stat-value negative" id="dash-expense-realized">R$ 0,00</div>
+                <div class="stat-subtext">Valores efetivamente pagos</div>
+              </div>
+
+              <div class="stat-item">
+                <div class="stat-header">
+                  <span class="stat-label">Resultado do Caixa</span>
+                  <span class="stat-icon"><i data-lucide="activity"></i></span>
+                </div>
+                <div class="stat-value" id="dash-cashflow-result">R$ 0,00</div>
+                <div class="stat-subtext">Superávit ou déficit no período</div>
+              </div>
+
+              <div class="stat-item">
+                <div class="stat-header">
+                  <span class="stat-label">A Pagar no Período</span>
+                  <span class="stat-icon"><i data-lucide="clock"></i></span>
+                </div>
+                <div class="stat-value warning" id="dash-payables-pending">R$ 0,00</div>
+                <div class="stat-subtext">Compromissos futuros</div>
+              </div>
+
+              <div class="stat-item">
+                <div class="stat-header">
+                  <span class="stat-label">Contas Vencidas</span>
+                  <span class="stat-icon"><i data-lucide="alert-triangle"></i></span>
+                </div>
+                <div class="stat-value negative" id="dash-payables-overdue">R$ 0,00</div>
+                <div class="stat-subtext">Exigem atenção imediata</div>
+              </div>
+
+              <div class="stat-item">
+                <div class="stat-header">
+                  <span class="stat-label">A Receber no Período</span>
+                  <span class="stat-icon"><i data-lucide="calendar"></i></span>
+                </div>
+                <div class="stat-value positive" id="dash-receivables-pending">R$ 0,00</div>
+                <div class="stat-subtext">Previsão de cobrança</div>
+              </div>
+            </div>
+
+            <!-- Painéis com Gráfico e Próximos Vencimentos -->
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 24px;">
+              <div class="content-panel">
+                <div class="panel-header">
+                  <span class="panel-title">
+                    <i data-lucide="bar-chart-3"></i> Evolução de Faturamento dos Últimos Dias
+                  </span>
+                  <span class="panel-subtitle">Bruto vs Líquido</span>
+                </div>
+                <div class="panel-body">
+                  <div class="chart-container-box">
+                    <canvas id="chart-dash-cashflow"></canvas>
+                  </div>
+                </div>
+              </div>
+
+              <div class="content-panel">
+                <div class="panel-header">
+                  <span class="panel-title">
+                    <i data-lucide="alert-circle"></i> Próximos Vencimentos
+                  </span>
+                  <button class="btn btn-sm btn-secondary" onclick="window.aureFin.switchView('payables')">Ver Todas</button>
+                </div>
+                <div class="panel-body" id="dash-upcoming-payables-list">
+                  <!-- Carregado via JS -->
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 2. FATURAMENTO DIÁRIO -->
+          <section id="view-daily-revenue" class="view-section">
+            <div class="page-header">
+              <div class="page-header-text">
+                <h1>Faturamento Diário</h1>
+                <p>Fechamento de vendas diárias por canais (Pix, Cartão, Dinheiro, Transferência) com conciliação.</p>
+              </div>
+              <div class="page-header-actions">
+                <button class="btn btn-primary" onclick="window.aureFin.openDailyRevenueModal()">
+                  <i data-lucide="plus"></i> Novo Fechamento Diário
+                </button>
+              </div>
+            </div>
+
+            <div class="content-panel">
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Data</th>
+                      <th class="align-right">Bruto (R$)</th>
+                      <th class="align-right">Descontos (R$)</th>
+                      <th class="align-right">Líquido (R$)</th>
+                      <th class="align-right">Pix (R$)</th>
+                      <th class="align-right">Cartões (R$)</th>
+                      <th class="align-right">Dinheiro (R$)</th>
+                      <th>Observações</th>
+                      <th class="align-center">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody id="daily-revenue-table-body"></tbody>
+                  <tfoot>
+                    <tr>
+                      <td>Totais do Período</td>
+                      <td class="align-right" id="daily-tot-gross">R$ 0,00</td>
+                      <td class="align-right" id="daily-tot-disc">R$ 0,00</td>
+                      <td class="align-right" id="daily-tot-net" style="color: var(--success);">R$ 0,00</td>
+                      <td class="align-right" id="daily-tot-pix">R$ 0,00</td>
+                      <td class="align-right" id="daily-tot-cards">R$ 0,00</td>
+                      <td class="align-right" id="daily-tot-cash">R$ 0,00</td>
+                      <td colspan="2"></td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- 3. MOVIMENTAÇÕES FINANCEIRAS -->
+          <section id="view-transactions" class="view-section">
+            <div class="page-header">
+              <div class="page-header-text">
+                <h1>Movimentações Financeiras (Livro Caixa)</h1>
+                <p>Extrato unificado de entradas, saídas e transferências entre contas bancárias.</p>
+              </div>
+              <div class="page-header-actions">
+                <button class="btn btn-primary" onclick="window.aureFin.openTransactionModal()">
+                  <i data-lucide="plus"></i> Nova Movimentação
+                </button>
+              </div>
+            </div>
+
+            <div class="content-panel">
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Data</th>
+                      <th>Tipo</th>
+                      <th>Descrição</th>
+                      <th>Conta Financeira</th>
+                      <th>Categoria</th>
+                      <th class="align-right">Valor (R$)</th>
+                      <th class="align-center">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody id="transactions-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- 4. CONTAS A PAGAR -->
+          <section id="view-payables" class="view-section">
+            <div class="page-header">
+              <div class="page-header-text">
+                <h1>Contas a Pagar</h1>
+                <p>Controle de obrigações com fornecedores, parcelamentos, vencimentos e quitações.</p>
+              </div>
+              <div class="page-header-actions">
+                <button class="btn btn-primary" onclick="window.aureFin.openPayableModal()">
+                  <i data-lucide="plus"></i> Nova Conta a Pagar
+                </button>
+              </div>
+            </div>
+
+            <div class="content-panel">
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Vencimento</th>
+                      <th>Descrição / Fornecedor</th>
+                      <th>Documento</th>
+                      <th>Parcela</th>
+                      <th class="align-right">Valor Original</th>
+                      <th class="align-right">Valor Pago</th>
+                      <th class="align-center">Status</th>
+                      <th class="align-center">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody id="payables-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- 5. CONTAS A RECEBER -->
+          <section id="view-receivables" class="view-section">
+            <div class="page-header">
+              <div class="page-header-text">
+                <h1>Contas a Receber</h1>
+                <p>Gestão de cobranças a clientes, previsões de recebimento e histórico de pagamentos.</p>
+              </div>
+              <div class="page-header-actions">
+                <button class="btn btn-primary" onclick="window.aureFin.openReceivableModal()">
+                  <i data-lucide="plus"></i> Nova Conta a Receber
+                </button>
+              </div>
+            </div>
+
+            <div class="content-panel">
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Previsão</th>
+                      <th>Descrição / Cliente</th>
+                      <th>Forma</th>
+                      <th>Parcela</th>
+                      <th class="align-right">Valor Previsto</th>
+                      <th class="align-right">Recebido</th>
+                      <th class="align-center">Status</th>
+                      <th class="align-center">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody id="receivables-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- 6. BOLETOS E DOCUMENTOS -->
+          <section id="view-bankslips" class="view-section">
+            <div class="page-header">
+              <div class="page-header-text">
+                <h1>Boletos e Linhas Digitáveis</h1>
+                <p>Consulta centralizada de códigos de barras, linhas digitáveis e liquidação de boletos.</p>
+              </div>
+            </div>
+
+            <div class="content-panel">
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Vencimento</th>
+                      <th>Beneficiário / Descrição</th>
+                      <th>Linha Digitável / Código de Barras</th>
+                      <th class="align-right">Valor</th>
+                      <th class="align-center">Status</th>
+                      <th class="align-center">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody id="bankslips-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- 7. DESPESAS -->
+          <section id="view-expenses" class="view-section">
+            <div class="page-header">
+              <div class="page-header-text">
+                <h1>Despesas Detalhadas</h1>
+                <p>Relatório específico de custos fixos, variáveis e despesas operacionais liquidadas.</p>
+              </div>
+            </div>
+            <div class="content-panel">
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Data</th>
+                      <th>Descrição</th>
+                      <th>Categoria</th>
+                      <th>Conta Débito</th>
+                      <th class="align-right">Valor</th>
+                      <th class="align-center">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody id="expenses-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- 8. RECEITAS -->
+          <section id="view-revenues" class="view-section">
+            <div class="page-header">
+              <div class="page-header-text">
+                <h1>Receitas Realizadas</h1>
+                <p>Histórico completo de entradas operacionais e não-operacionais.</p>
+              </div>
+            </div>
+            <div class="content-panel">
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Data</th>
+                      <th>Descrição</th>
+                      <th>Categoria</th>
+                      <th>Conta Crédito</th>
+                      <th class="align-right">Valor</th>
+                      <th class="align-center">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody id="revenues-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- 9. FLUXO DE CAIXA -->
+          <section id="view-cashflow" class="view-section">
+            <div class="page-header">
+              <div class="page-header-text">
+                <h1>Fluxo de Caixa Realizado</h1>
+                <p>Conciliação de saldo inicial, movimentações efetivas e saldo final consolidado.</p>
+              </div>
+            </div>
+
+            <div class="stat-summary-grid">
+              <div class="stat-item">
+                <span class="stat-label">Saldo Inicial Estimado</span>
+                <div class="stat-value neutral" id="cashflow-start-bal">R$ 0,00</div>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">(+) Entradas Efetivas</span>
+                <div class="stat-value positive" id="cashflow-incomes">R$ 0,00</div>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">(-) Saídas Efetivas</span>
+                <div class="stat-value negative" id="cashflow-expenses">R$ 0,00</div>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">(=) Saldo Final em Caixa</span>
+                <div class="stat-value" id="cashflow-final-bal">R$ 0,00</div>
+              </div>
+            </div>
+
+            <div class="content-panel">
+              <div class="panel-header">
+                <span class="panel-title"><i data-lucide="pie-chart"></i> Distribuição de Despesas por Categoria</span>
+              </div>
+              <div class="panel-body">
+                <div class="chart-container-box">
+                  <canvas id="chart-cashflow-categories"></canvas>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 10. BANCOS E CAIXAS -->
+          <section id="view-bank-accounts" class="view-section">
+            <div class="page-header">
+              <div class="page-header-text">
+                <h1>Contas Financeiras e Caixas</h1>
+                <p>Contas bancárias brasileiras (Banco do Brasil, Mercado Pago, PagBank, Bradesco) e caixas físicos.</p>
+              </div>
+              <div class="page-header-actions">
+                <button class="btn btn-secondary" onclick="window.aureFin.openAdjustBalanceModal()">
+                  <i data-lucide="sliders"></i> Ajustar Saldo de Conta
+                </button>
+                <button class="btn btn-primary" onclick="window.aureFin.openAddAccountModal()">
+                  <i data-lucide="plus"></i> Nova Conta Bancária
+                </button>
+              </div>
+            </div>
+            <div class="stat-summary-grid" id="bank-accounts-grid"></div>
+          </section>
+
+          <!-- 11. EMPRÉSTIMOS E PARCELAS -->
+          <section id="view-loans" class="view-section">
+            <div class="page-header">
+              <div class="page-header-text">
+                <h1>Empréstimos e Financiamentos</h1>
+                <p>Controle de capital de giro, amortização e saldo devedor.</p>
+              </div>
+            </div>
+            <div class="content-panel">
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Instituição</th>
+                      <th class="align-right">Valor Contratado</th>
+                      <th class="align-center">Parcelas</th>
+                      <th class="align-right">Valor Parcela</th>
+                      <th>Taxa</th>
+                      <th class="align-right">Saldo Devedor</th>
+                      <th class="align-center">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody id="loans-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- 12. CLIENTES -->
+          <section id="view-customers" class="view-section">
+            <div class="page-header">
+              <div class="page-header-text">
+                <h1>Carteira de Clientes</h1>
+                <p>Cadastro com histórico de cobranças e faturamento acumulado.</p>
+              </div>
+            </div>
+            <div class="content-panel">
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Razão Social / Nome</th>
+                      <th>CNPJ / CPF</th>
+                      <th>E-mail</th>
+                      <th>Telefone</th>
+                      <th class="align-right">Total Faturado</th>
+                      <th class="align-center">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody id="customers-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- 13. FORNECEDORES -->
+          <section id="view-suppliers" class="view-section">
+            <div class="page-header">
+              <div class="page-header-text">
+                <h1>Fornecedores e Parceiros</h1>
+                <p>Cadastro com dados de contato e obrigações vinculadas.</p>
+              </div>
+            </div>
+            <div class="content-panel">
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Fornecedor</th>
+                      <th>CNPJ</th>
+                      <th>E-mail</th>
+                      <th>Telefone</th>
+                      <th class="align-center">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody id="suppliers-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- 14. CATEGORIAS FINANCEIRAS -->
+          <section id="view-categories" class="view-section">
+            <div class="page-header">
+              <div class="page-header-text">
+                <h1>Plano de Contas Gerencial</h1>
+                <p>Classificação de receitas e despesas por centro de custo.</p>
+              </div>
+            </div>
+            <div class="content-panel">
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Categoria</th>
+                      <th>Tipo</th>
+                      <th>Grupo</th>
+                      <th class="align-center">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody id="categories-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- 15. METAS FINANCEIRAS -->
+          <section id="view-goals" class="view-section">
+            <div class="page-header">
+              <div class="page-header-text">
+                <h1>Metas e Objetivos Financeiros</h1>
+                <p>Acompanhamento de objetivos mensais de vendas e teto de gastos.</p>
+              </div>
+            </div>
+            <div id="goals-cards-container"></div>
+          </section>
+
+          <!-- 16. RELATÓRIOS & DRE -->
+          <section id="view-reports" class="view-section">
+            <div class="page-header">
+              <div class="page-header-text">
+                <h1>DRE Gerencial — Demonstrativo de Resultado</h1>
+                <p>Visão contábil e gerencial por competência com margem de contribuição e ponto de equilíbrio.</p>
+              </div>
+              <div class="page-header-actions">
+                <button class="btn btn-secondary" onclick="window.print()">
+                  <i data-lucide="printer"></i> Versão para Impressão
+                </button>
+              </div>
+            </div>
+
+            <div class="content-panel">
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Linha do DRE Gerencial</th>
+                      <th class="align-right">Valor Consolidado (R$)</th>
+                      <th>Observação</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>(+) Receita Bruta Operacional</strong></td>
+                      <td class="align-right" id="dre-gross-revenue" style="font-weight: 700;">R$ 0,00</td>
+                      <td>Faturamento de vendas e serviços</td>
+                    </tr>
+                    <tr>
+                      <td style="color: var(--text-muted);">&nbsp;&nbsp;&nbsp;&nbsp;(-) Deduções e Descontos Concedidos</td>
+                      <td class="align-right" id="dre-deductions" style="color: var(--danger);">R$ 0,00</td>
+                      <td>Descontos e devoluções</td>
+                    </tr>
+                    <tr style="background: #f8fafc;">
+                      <td><strong>(=) Receita Líquida Operacional</strong></td>
+                      <td class="align-right" id="dre-net-revenue" style="font-weight: 700; color: var(--navy-700);">R$ 0,00</td>
+                      <td>Base líquida de faturamento</td>
+                    </tr>
+                    <tr>
+                      <td style="color: var(--text-muted);">&nbsp;&nbsp;&nbsp;&nbsp;(-) Custos e Despesas Variáveis</td>
+                      <td class="align-right" id="dre-var-costs" style="color: var(--danger);">R$ 0,00</td>
+                      <td>Mercadorias, taxas de cartão, impostos diretos</td>
+                    </tr>
+                    <tr style="background: #ecfdf5;">
+                      <td><strong>(=) Margem de Contribuição</strong></td>
+                      <td class="align-right" id="dre-contrib-margin" style="font-weight: 700; color: var(--success);">R$ 0,00</td>
+                      <td>Capacidade de cobrir custos fixos</td>
+                    </tr>
+                    <tr>
+                      <td style="color: var(--text-muted);">&nbsp;&nbsp;&nbsp;&nbsp;(-) Despesas Operacionais Fixas</td>
+                      <td class="align-right" id="dre-fixed-expenses" style="color: var(--danger);">R$ 0,00</td>
+                      <td>Aluguel, salários, energia, telecom</td>
+                    </tr>
+                    <tr style="background: #f8fafc;">
+                      <td><strong>(=) Resultado Operacional (EBITDA)</strong></td>
+                      <td class="align-right" id="dre-operating-result" style="font-weight: 700;">R$ 0,00</td>
+                      <td>Resultado gerencial operacional</td>
+                    </tr>
+                    <tr style="background: #f1f5f9; border-top: 2px solid var(--border-strong);">
+                      <td><strong style="font-size: 14px;">(=) LUCRO LÍQUIDO DO PERÍODO</strong></td>
+                      <td class="align-right" id="dre-net-profit" style="font-weight: 700; font-size: 15px; color: var(--success);">R$ 0,00</td>
+                      <td>Resultado final gerencial</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Ponto de Equilíbrio Operacional Estimado</strong></td>
+                      <td class="align-right" id="dre-breakeven" style="font-weight: 700;">R$ 0,00</td>
+                      <td>Faturamento mínimo para não ter prejuízo</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- 17. EXCEL & EXPORTAÇÕES -->
+          <section id="view-excel-export" class="view-section">
+            <div class="page-header">
+              <div class="page-header-text">
+                <h1>Central de Exportação Excel (SheetJS)</h1>
+                <p>Planilhas reais .xlsx multi-aba formatadas com moedas, datas, filtros e fórmulas automáticas.</p>
+              </div>
+            </div>
+
+            <div id="excel-export-status-box" style="margin-bottom: 24px;"></div>
+
+            <div class="content-panel">
+              <div class="panel-header">
+                <span class="panel-title"><i data-lucide="file-spreadsheet"></i> Planilha Mestre Consolidada</span>
+                <button class="btn btn-primary" onclick="window.aureFin.triggerMasterExcelExport()">
+                  <i data-lucide="download"></i> Gerar e Baixar .XLSX Completo
+                </button>
+              </div>
+              <div class="panel-body">
+                <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+                  O arquivo consolidado inclui abas completas com formatação executiva brasileira:
+                  <strong>Resumo Executivo</strong>, <strong>Faturamento Diário</strong>, <strong>Contas a Pagar</strong>, <strong>Contas a Receber</strong>, <strong>Movimentações</strong>, <strong>Saldos Bancários</strong> e <strong>Empréstimos</strong>, com cabeçalhos congelados e fórmulas de soma nativas.
+                </p>
+              </div>
+            </div>
+
+            <div class="content-panel">
+              <div class="panel-header">
+                <span class="panel-title"><i data-lucide="history"></i> Histórico de Exportações Geradas</span>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Nome do Arquivo</th>
+                      <th>Tipo</th>
+                      <th>Período</th>
+                      <th>Data / Hora de Geração</th>
+                    </tr>
+                  </thead>
+                  <tbody id="excel-history-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- 18. LIXEIRA & AUDITORIA -->
+          <section id="view-trash-audit" class="view-section">
+            <div class="page-header">
+              <div class="page-header-text">
+                <h1>Lixeira & Histórico de Auditoria</h1>
+                <p>Recuperação segura de registros excluídos e trilha de alterações do sistema.</p>
+              </div>
+            </div>
+
+            <div class="content-panel">
+              <div class="panel-header">
+                <span class="panel-title"><i data-lucide="trash-2"></i> Itens na Lixeira</span>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Origem</th>
+                      <th>Identificação</th>
+                      <th>Excluído em</th>
+                      <th class="align-center">Ação</th>
+                    </tr>
+                  </thead>
+                  <tbody id="trash-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="content-panel">
+              <div class="panel-header">
+                <span class="panel-title"><i data-lucide="history"></i> Trilha de Auditoria Recente</span>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Horário</th>
+                      <th>Ação</th>
+                      <th>Entidade</th>
+                      <th>Descrição</th>
+                    </tr>
+                  </thead>
+                  <tbody id="audit-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- 19. CONFIGURAÇÕES & BACKUP -->
+          <section id="view-settings" class="view-section">
+            <div class="page-header">
+              <div class="page-header-text">
+                <h1>Configurações, Personalização & Backup</h1>
+                <p>Personalize o nome da sua empresa, gerencie cópias de segurança e controle o estado inicial do sistema.</p>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+              <!-- Personalização de Nome -->
+              <div class="content-panel">
+                <div class="panel-header">
+                  <span class="panel-title"><i data-lucide="building-2"></i> Identificação da Organização / Pessoa</span>
+                </div>
+                <div class="panel-body">
+                  <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 14px;">
+                    Defina o nome da sua empresa ou seu nome para personalizar a barra superior, o menu lateral e todos os relatórios e planilhas exportadas.
+                  </p>
+                  <div style="display: flex; gap: 8px;">
+                    <input type="text" id="settings-org-name-input" class="form-control" placeholder="Ex: Minha Empresa Ltda ou João Silva" />
+                    <button class="btn btn-primary" onclick="window.aureFin.saveOrgNameFromSettings()">Salvar Nome</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Reiniciar do Zero -->
+              <div class="content-panel">
+                <div class="panel-header">
+                  <span class="panel-title" style="color: var(--danger);"><i data-lucide="refresh-cw"></i> Começar do Zero (Limpar Tudo)</span>
+                </div>
+                <div class="panel-body">
+                  <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 14px;">
+                    Zera todas as transações, dívidas e faturamentos de demonstração, deixando o sistema 100% limpo com R$ 0,00 nos 4 bancos brasileiros solicitados: Banco do Brasil, Mercado Pago, PagBank e Bradesco.
+                  </p>
+                  <button class="btn btn-danger" onclick="window.aureFin.promptResetToZero()">
+                    <i data-lucide="trash-2"></i> Zerar Tudo & Iniciar com R$ 0,00
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+              <div class="content-panel">
+                <div class="panel-header">
+                  <span class="panel-title"><i data-lucide="download"></i> Backup Completo (JSON)</span>
+                </div>
+                <div class="panel-body">
+                  <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">
+                    Exporte todos os seus dados locais em um único arquivo JSON seguro para arquivamento ou transporte.
+                  </p>
+                  <button class="btn btn-primary" onclick="window.aureFin.exportBackupJSON()">
+                    <i data-lucide="download"></i> Exportar Arquivo JSON
+                  </button>
+                </div>
+              </div>
+
+              <div class="content-panel">
+                <div class="panel-header">
+                  <span class="panel-title"><i data-lucide="upload"></i> Restaurar Cópia de Segurança</span>
+                </div>
+                <div class="panel-body">
+                  <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">
+                    Restaure um arquivo JSON previamente exportado. Os dados atuais serão validados antes da substituição.
+                  </p>
+                  <input type="file" id="backup-file-input" accept=".json" style="display: none;" onchange="window.aureFin.importBackupJSON(this)" />
+                  <button class="btn btn-secondary" onclick="document.getElementById('backup-file-input').click()">
+                    <i data-lucide="upload"></i> Selecionar Arquivo de Backup
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 20. AJUDA & ORIENTAÇÕES -->
+          <section id="view-help" class="view-section">
+            <div class="page-header">
+              <div class="page-header-text">
+                <h1>Ajuda & Central de Orientações</h1>
+                <p>Boas práticas de gestão financeira para PMEs e atalhos de produtividade.</p>
+              </div>
+            </div>
+
+            <div class="content-panel">
+              <div class="panel-header">
+                <span class="panel-title"><i data-lucide="book-open"></i> Atalhos de Produtividade no Teclado</span>
+              </div>
+              <div class="panel-body" style="font-size: 13px; color: var(--text-secondary);">
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
+                  <li><strong>Alt + N:</strong> Abrir modal para novo lançamento financeiro</li>
+                  <li><strong>Alt + C:</strong> Abrir calculadora financeira (Margem, Juros, Ponto de Equilíbrio)</li>
+                  <li><strong>Alt + E:</strong> Gerar e baixar a planilha consolidada em Excel (.xlsx)</li>
+                  <li><strong>Alt + F ou /:</strong> Ativar a barra de busca rápida no topo</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="content-panel">
+              <div class="panel-header">
+                <span class="panel-title"><i data-lucide="info"></i> Conceitos Financeiros Fundamentais</span>
+              </div>
+              <div class="panel-body" style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+                <p style="margin-bottom: 12px;">
+                  <strong>Regime de Caixa vs Regime de Competência:</strong> O Fluxo de Caixa acompanha exatamente o dia em que o dinheiro entra ou sai da conta bancária. Já o DRE (Demonstrativo de Resultado) calcula o lucro da empresa com base no faturamento do mês e nos custos gerados naquele mesmo período, independentemente se o cliente pagou à vista ou parcelado.
+                </p>
+                <p>
+                  <strong>Transferências Internas:</strong> Mover recursos entre o Caixa Físico e a Conta Corrente ou Reserva Financeira não afeta o resultado contábil e não deve ser lançado como despesa.
+                </p>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </main>
+    </div>
+
+    <!-- =========================================================================
+         MODAIS DO SISTEMA
+         ========================================================================= -->
+
+    <!-- MODAL 1: LANÇAMENTO FINANCEIRO -->
+    <div id="transaction-modal" class="modal-backdrop" role="dialog" aria-modal="true">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div class="modal-title"><i data-lucide="plus-circle"></i> Novo Lançamento Financeiro</div>
+          <button class="modal-close-btn" onclick="window.aureFin.closeTransactionModal()"><i data-lucide="x"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-grid">
+            <div class="form-group col-6">
+              <label class="form-label">Tipo de Movimentação</label>
+              <select id="tx-type" class="form-control">
+                <option value="expense">Despesa (Saída)</option>
+                <option value="income">Receita (Entrada)</option>
+                <option value="transfer">Transferência Interna</option>
+              </select>
+            </div>
+            <div class="form-group col-6">
+              <label class="form-label">Data da Operação</label>
+              <input type="date" id="tx-date" class="form-control" />
+            </div>
+            <div class="form-group col-12">
+              <label class="form-label">Descrição <span class="required">*</span></label>
+              <input type="text" id="tx-description" class="form-control" placeholder="Ex: Pagamento Fornecedor Silva" />
+            </div>
+            <div class="form-group col-6">
+              <label class="form-label">Valor (R$) <span class="required">*</span></label>
+              <input type="text" id="tx-amount" class="form-control" placeholder="0,00" />
+            </div>
+            <div class="form-group col-6">
+              <label class="form-label">Conta Financeira</label>
+              <select id="tx-account" class="form-control"></select>
+            </div>
+            <div class="form-group col-12">
+              <label class="form-label">Categoria Financeira</label>
+              <select id="tx-category" class="form-control"></select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" onclick="window.aureFin.closeTransactionModal()">Cancelar</button>
+          <button class="btn btn-primary" onclick="window.aureFin.saveTransaction()">Salvar Lançamento</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL 2: FECHAMENTO DIÁRIO DE FATURAMENTO -->
+    <div id="daily-revenue-modal" class="modal-backdrop" role="dialog" aria-modal="true">
+      <div class="modal-card modal-lg">
+        <div class="modal-header">
+          <div class="modal-title"><i data-lucide="receipt"></i> Fechamento de Faturamento Diário</div>
+          <button class="modal-close-btn" onclick="window.aureFin.closeDailyRevenueModal()"><i data-lucide="x"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-grid">
+            <div class="form-group col-4">
+              <label class="form-label">Data do Faturamento</label>
+              <input type="date" id="daily-rev-date" class="form-control" />
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label">Valor Bruto das Vendas (R$)</label>
+              <input type="text" id="daily-rev-gross" class="form-control" placeholder="0,00" />
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label">Descontos / Estornos (R$)</label>
+              <input type="text" id="daily-rev-discount" class="form-control" placeholder="0,00" />
+            </div>
+
+            <div class="col-12" style="margin-top: 10px; border-bottom: 1px solid var(--border-light); padding-bottom: 4px;">
+              <strong>Detalhamento dos Meios de Pagamento Recebidos</strong>
+            </div>
+
+            <div class="form-group col-4">
+              <label class="form-label">Pix (R$)</label>
+              <input type="text" id="daily-rev-pix" class="form-control" placeholder="0,00" />
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label">Cartão de Crédito (R$)</label>
+              <input type="text" id="daily-rev-credit" class="form-control" placeholder="0,00" />
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label">Cartão de Débito (R$)</label>
+              <input type="text" id="daily-rev-debit" class="form-control" placeholder="0,00" />
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label">Dinheiro em Espécie (R$)</label>
+              <input type="text" id="daily-rev-cash" class="form-control" placeholder="0,00" />
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label">Vendas a Prazo / Faturado (R$)</label>
+              <input type="text" id="daily-rev-term" class="form-control" placeholder="0,00" />
+            </div>
+            <div class="form-group col-4">
+              <label class="form-label">Observações</label>
+              <input type="text" id="daily-rev-notes" class="form-control" placeholder="Fechamento de caixa balcão" />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" onclick="window.aureFin.closeDailyRevenueModal()">Cancelar</button>
+          <button class="btn btn-primary" onclick="window.aureFin.saveDailyRevenue()">Validar e Salvar Fechamento</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL 3: CONTA A PAGAR / BOLETO -->
+    <div id="payable-modal" class="modal-backdrop" role="dialog" aria-modal="true">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div class="modal-title"><i data-lucide="arrow-up-right"></i> Nova Conta a Pagar</div>
+          <button class="modal-close-btn" onclick="window.aureFin.closePayableModal()"><i data-lucide="x"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-grid">
+            <div class="form-group col-12">
+              <label class="form-label">Descrição <span class="required">*</span></label>
+              <input type="text" id="pay-desc" class="form-control" placeholder="Ex: Aluguel Comercial Outubro" />
+            </div>
+            <div class="form-group col-6">
+              <label class="form-label">Fornecedor</label>
+              <select id="pay-supplier" class="form-control"></select>
+            </div>
+            <div class="form-group col-6">
+              <label class="form-label">Categoria</label>
+              <select id="pay-category" class="form-control"></select>
+            </div>
+            <div class="form-group col-6">
+              <label class="form-label">Data de Vencimento <span class="required">*</span></label>
+              <input type="date" id="pay-due-date" class="form-control" />
+            </div>
+            <div class="form-group col-6">
+              <label class="form-label">Valor Original (R$) <span class="required">*</span></label>
+              <input type="text" id="pay-amount" class="form-control" placeholder="0,00" />
+            </div>
+            <div class="form-group col-6">
+              <label class="form-label">Nº Documento / NF</label>
+              <input type="text" id="pay-doc" class="form-control" placeholder="Ex: NF-10492" />
+            </div>
+            <div class="form-group col-6">
+              <label class="form-label">Linha Digitável / Código Boleto</label>
+              <input type="text" id="pay-barcode" class="form-control" placeholder="47 ou 48 dígitos" />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" onclick="window.aureFin.closePayableModal()">Cancelar</button>
+          <button class="btn btn-primary" onclick="window.aureFin.savePayable()">Cadastrar Obrigação</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL 4: CONTA A RECEBER -->
+    <div id="receivable-modal" class="modal-backdrop" role="dialog" aria-modal="true">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div class="modal-title"><i data-lucide="arrow-down-left"></i> Nova Conta a Receber</div>
+          <button class="modal-close-btn" onclick="window.aureFin.closeReceivableModal()"><i data-lucide="x"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-grid">
+            <div class="form-group col-12">
+              <label class="form-label">Descrição <span class="required">*</span></label>
+              <input type="text" id="rec-desc" class="form-control" placeholder="Ex: Consultoria Técnica Contrato #42" />
+            </div>
+            <div class="form-group col-6">
+              <label class="form-label">Cliente</label>
+              <select id="rec-customer" class="form-control"></select>
+            </div>
+            <div class="form-group col-6">
+              <label class="form-label">Categoria de Receita</label>
+              <select id="rec-category" class="form-control"></select>
+            </div>
+            <div class="form-group col-6">
+              <label class="form-label">Data Prevista de Recebimento</label>
+              <input type="date" id="rec-expected-date" class="form-control" />
+            </div>
+            <div class="form-group col-6">
+              <label class="form-label">Valor Previsto (R$)</label>
+              <input type="text" id="rec-amount" class="form-control" placeholder="0,00" />
+            </div>
+            <div class="form-group col-12">
+              <label class="form-label">Forma de Recebimento</label>
+              <select id="rec-method" class="form-control">
+                <option value="Pix">Pix</option>
+                <option value="Boleto Bancário">Boleto Bancário</option>
+                <option value="Cartão de Crédito">Cartão de Crédito</option>
+                <option value="Transferência Bancária">Transferência Bancária</option>
+                <option value="Dinheiro">Dinheiro</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" onclick="window.aureFin.closeReceivableModal()">Cancelar</button>
+          <button class="btn btn-primary" onclick="window.aureFin.saveReceivable()">Salvar Conta a Receber</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL 5: CALCULADORA FINANCEIRA -->
+    <div id="calculator-modal" class="modal-backdrop" role="dialog" aria-modal="true">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div class="modal-title"><i data-lucide="calculator"></i> Calculadora Financeira Empresarial</div>
+          <button class="modal-close-btn" onclick="window.aureFin.closeCalculatorModal()"><i data-lucide="x"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="tab-nav">
+            <button class="tab-btn active" id="tab-btn-margin" onclick="document.getElementById('calc-panel-margin').style.display='block'; document.getElementById('calc-panel-interest').style.display='none'; this.classList.add('active'); document.getElementById('tab-btn-interest').classList.remove('active');">
+              Margem de Lucro & Markup
+            </button>
+            <button class="tab-btn" id="tab-btn-interest" onclick="document.getElementById('calc-panel-margin').style.display='none'; document.getElementById('calc-panel-interest').style.display='block'; this.classList.add('active'); document.getElementById('tab-btn-margin').classList.remove('active');">
+              Juros Simples & Parcelas
+            </button>
+          </div>
+
+          <!-- Painel 1: Margem e Markup -->
+          <div id="calc-panel-margin">
+            <div class="form-grid">
+              <div class="form-group col-6">
+                <label class="form-label">Custo do Produto / Serviço (R$)</label>
+                <input type="text" id="calc-cost" class="form-control" placeholder="100,00" oninput="window.aureFin.calculateTool('margin')" />
+              </div>
+              <div class="form-group col-6">
+                <label class="form-label">Preço de Venda (R$)</label>
+                <input type="text" id="calc-price" class="form-control" placeholder="160,00" oninput="window.aureFin.calculateTool('margin')" />
+              </div>
+            </div>
+            <div class="calculator-result-card">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                <span>Lucro Bruto por Unidade:</span>
+                <strong id="calc-res-profit" class="tabular-nums" style="color: var(--success);">R$ 0,00</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                <span>Margem de Lucro (sobre a Venda):</span>
+                <strong id="calc-res-margin" class="tabular-nums">0.00%</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span>Markup Multiplicador (sobre o Custo):</span>
+                <strong id="calc-res-markup" class="tabular-nums">0.00%</strong>
+              </div>
+              <div class="calc-formula-explainer">
+                Margem = (Lucro ÷ Preço) × 100 &nbsp;·&nbsp; Markup = (Lucro ÷ Custo) × 100
+              </div>
+            </div>
+          </div>
+
+          <!-- Painel 2: Juros Simples -->
+          <div id="calc-panel-interest" style="display: none;">
+            <div class="form-grid">
+              <div class="form-group col-4">
+                <label class="form-label">Valor Principal (R$)</label>
+                <input type="text" id="calc-int-principal" class="form-control" placeholder="1000,00" oninput="window.aureFin.calculateTool('interest')" />
+              </div>
+              <div class="form-group col-4">
+                <label class="form-label">Taxa Mensal (%)</label>
+                <input type="number" step="0.1" id="calc-int-rate" class="form-control" placeholder="2.5" oninput="window.aureFin.calculateTool('interest')" />
+              </div>
+              <div class="form-group col-4">
+                <label class="form-label">Prazo (Meses)</label>
+                <input type="number" id="calc-int-months" class="form-control" placeholder="12" oninput="window.aureFin.calculateTool('interest')" />
+              </div>
+            </div>
+            <div class="calculator-result-card">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                <span>Total de Juros Calculados:</span>
+                <strong id="calc-res-interest" class="tabular-nums" style="color: var(--danger);">R$ 0,00</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                <span>Montante Total a Pagar:</span>
+                <strong id="calc-res-total" class="tabular-nums">R$ 0,00</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span>Valor Previsto da Parcela:</span>
+                <strong id="calc-res-installment" class="tabular-nums">R$ 0,00</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" onclick="window.aureFin.closeCalculatorModal()">Fechar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL 6: LEMBRAR DEPOIS / LEMBRETES FINANCEIROS -->
+    <div id="reminders-modal" class="modal-backdrop" role="dialog" aria-modal="true">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div class="modal-title"><i data-lucide="bell"></i> Lembrar Depois (Lembretes Financeiros)</div>
+          <button class="modal-close-btn" onclick="window.aureFin.closeRemindersModal()"><i data-lucide="x"></i></button>
+        </div>
+        <div class="modal-body">
+          <div style="background: var(--surface-subtle); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 14px; margin-bottom: 16px;">
+            <div style="font-weight: 600; font-size: 13px; margin-bottom: 8px;">Adicionar Novo Lembrete</div>
+            <div class="form-grid">
+              <div class="form-group col-8">
+                <input type="text" id="new-reminder-text" class="form-control" placeholder="Ex: Cobrar nota fiscal do cliente, pagar boleto..." />
+              </div>
+              <div class="form-group col-4">
+                <input type="date" id="new-reminder-date" class="form-control" />
+              </div>
+            </div>
+            <div style="margin-top: 10px; display: flex; justify-content: flex-end;">
+              <button class="btn btn-primary btn-sm" onclick="window.aureFin.saveNewReminder()">
+                <i data-lucide="plus"></i> Lembrar Disso
+              </button>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <strong style="font-size: 13px;">Seus Lembretes</strong>
+            <span style="font-size: 11px; color: var(--text-muted);" id="reminders-summary-text">0 pendentes</span>
+          </div>
+
+          <div id="reminders-list-container" class="reminders-list">
+            <!-- Renderizado dinamicamente -->
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" onclick="window.aureFin.closeRemindersModal()">Fechar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL 7: PERSONALIZAR NOME DA ORGANIZAÇÃO / PESSOA -->
+    <div id="org-name-modal" class="modal-backdrop" role="dialog" aria-modal="true">
+      <div class="modal-card modal-sm">
+        <div class="modal-header">
+          <div class="modal-title"><i data-lucide="building-2"></i> Personalizar Nome</div>
+          <button class="modal-close-btn" onclick="window.aureFin.closeOrgNameModal()"><i data-lucide="x"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Nome da Sua Empresa ou Seu Nome:</label>
+            <input type="text" id="modal-org-name-input" class="form-control" placeholder="Ex: Studio Finanças, Minha Loja, Carlos Eduardo" />
+            <span class="form-helper">Este nome será exibido no topo, na barra lateral e nos relatórios.</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" onclick="window.aureFin.closeOrgNameModal()">Cancelar</button>
+          <button class="btn btn-primary" onclick="window.aureFin.saveOrgNameFromModal()">Salvar Nome</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL 8: AJUSTAR SALDO DE CONTA BANCÁRIA -->
+    <div id="account-balance-modal" class="modal-backdrop" role="dialog" aria-modal="true">
+      <div class="modal-card modal-sm">
+        <div class="modal-header">
+          <div class="modal-title"><i data-lucide="sliders"></i> Ajustar Saldo de Conta</div>
+          <button class="modal-close-btn" onclick="window.aureFin.closeAdjustBalanceModal()"><i data-lucide="x"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group" style="margin-bottom: 12px;">
+            <label class="form-label">Conta Financeira:</label>
+            <select id="adjust-balance-account" class="form-control"></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Novo Saldo Atual (R$):</label>
+            <input type="text" id="adjust-balance-amount" class="form-control" placeholder="0,00" />
+            <span class="form-helper">Atualiza o saldo imediato disponível nesta conta bancária.</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" onclick="window.aureFin.closeAdjustBalanceModal()">Cancelar</button>
+          <button class="btn btn-primary" onclick="window.aureFin.saveAdjustedBalance()">Atualizar Saldo</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL 9: NOVA CONTA BANCÁRIA -->
+    <div id="add-account-modal" class="modal-backdrop" role="dialog" aria-modal="true">
+      <div class="modal-card modal-sm">
+        <div class="modal-header">
+          <div class="modal-title"><i data-lucide="landmark"></i> Nova Conta Bancária</div>
+          <button class="modal-close-btn" onclick="window.aureFin.closeAddAccountModal()"><i data-lucide="x"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group" style="margin-bottom: 10px;">
+            <label class="form-label">Nome da Conta / Banco:</label>
+            <input type="text" id="new-account-name" class="form-control" placeholder="Ex: Santander, Caixa Econômica, Nubank..." />
+          </div>
+          <div class="form-group" style="margin-bottom: 10px;">
+            <label class="form-label">Tipo de Conta:</label>
+            <select id="new-account-type" class="form-control">
+              <option value="checking">Conta Corrente / Digital</option>
+              <option value="cash">Caixa Físico / Gaveta</option>
+              <option value="investment">Aplicação / Reserva</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Saldo Inicial (R$):</label>
+            <input type="text" id="new-account-balance" class="form-control" placeholder="0,00" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" onclick="window.aureFin.closeAddAccountModal()">Cancelar</button>
+          <button class="btn btn-primary" onclick="window.aureFin.saveNewAccount()">Salvar Conta</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts da Aplicação (ECMAScript Moderno via Vite) -->
+    <script type="module" src="/js/app.js"></script>
+  </body>
+</html>
